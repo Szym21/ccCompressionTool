@@ -2,19 +2,22 @@
   "name": "3.compression_tool",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js", 
-  "bin" :{
-    "CompHuff" : "./dist/index.js"
+  "main": "index.js",
+  "bin": {
+    "CompHuff": "./dist/index.js"
   },
-  "scripts": {    
+  "scripts": {
     "build": "npx tsc",
-    "test": "mocha"
+    "test": "mocha src/**/*.ts --require ts-node/register"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/mocha": "^10.0.7",
     "chai": "^5.1.1",
-    "mocha": "^10.5.2"
+    "mocha": "^10.5.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
   }
 }
