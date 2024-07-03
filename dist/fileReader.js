@@ -15,8 +15,7 @@ class TextFileReader {
         return path_1.default.resolve(fileName);
     }
     readFile() {
-        console.log(this.filePath);
-        this.textContent = fs_1.default.readFileSync(this.filePath).toString();
+        this.textContent = fs_1.default.readFileSync(this.filePath, 'utf8').toString();
     }
 }
 exports.TextFileReader = TextFileReader;

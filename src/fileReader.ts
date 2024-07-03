@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { Dictionary } from '../utils/types';
 
 export class TextFileReader {
     filePath : string;
@@ -14,7 +15,15 @@ export class TextFileReader {
     }
 
     readFile(){        
-        console.log(this.filePath);
-        this.textContent = fs.readFileSync(this.filePath).toString();
+        this.textContent = fs.readFileSync(this.filePath, 'utf8').toString();
+    }
+
+    countChars(){
+        const letters : Dictionary<string, number> = {};
+        this.textContent.split('').forEach(char => {
+            letters[char]
+        })
+            
+        });
     }
 }
