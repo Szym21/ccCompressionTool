@@ -2,7 +2,9 @@
 import { TextFileReader } from "./fileReader";
 
 
+if (typeof process.argv[2] !== 'string') throw new Error("Expected filename as parameter");
 console.log(process.argv[2]);
 const reader = new TextFileReader(process.argv[2]);
 reader.readFile();
-console.log(reader.textContent);
+reader.countChars();
+console.log(reader.letters);
