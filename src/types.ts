@@ -2,4 +2,9 @@ type Dictionary<Key extends keyof any, Value> = {
     [key in Key]: Value;
 };
 
-export { Dictionary };
+interface HuffmanBaseNode {
+    isLeaf() : boolean;
+    getWeight() : number;
+}
+
+export { Dictionary, HuffmanBaseNode };

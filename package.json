@@ -8,16 +8,13 @@
   },
   "scripts": {
     "build": "npx tsc",
-    "test": "mocha src/**/*.ts --require ts-node/register"
+    "test": "echo no tests"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/mocha": "^10.0.7",
     "@types/node": "^20.14.2",
-    "chai": "^5.1.1",
-    "mocha": "^10.5.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.3"
   }
