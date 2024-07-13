@@ -19,7 +19,14 @@ export class HuffTree {
             else {
                 throw new Error("Cannot create HuffTreeNode");
             }
+    }
+    getRoot = () : HuffmanBaseNode => this.root;
+    getWeight = () : number => this.root.getWeight();
 
+    compareTo = (otherNode : HuffmanBaseNode) : number => {
+        if (this.root.getWeight() < otherNode.getWeight()) return -1;
+        else if ( this.root.getWeight()  == otherNode.getWeight()) return 0;
+        else return 1; 
     }
 
 }
