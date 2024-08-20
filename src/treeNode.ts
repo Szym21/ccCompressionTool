@@ -7,11 +7,10 @@ export class HuffmanTreeNode implements HuffmanBaseNode {
 
     constructor(
         left : HuffmanBaseNode, 
-        right : HuffmanBaseNode, 
-        weight : number) {
+        right : HuffmanBaseNode) {
             this.left = left;
             this.right = right;
-            this.weight = weight;
+            this.weight = this.left.getWeight() + this.left.getWeight();
     }
 
     getLeft = () : HuffmanBaseNode => this.left;
