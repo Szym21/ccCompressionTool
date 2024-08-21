@@ -1,21 +1,40 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TreeCreator = void 0;
-const leafNode_1 = require("./leafNode");
-const types_1 = require("./types");
+const treeNode_1 = require("./treeNode");
 class TreeCreator {
     constructor() {
-        this.tree = new types_1.PriorityQueue();
+        this.huffmanCodes = {};
     }
-    ;
-    createTree(letters) {
-        for (var i = 0; i < letters.length; i++) {
-            this.tree.enqueue({
-                priority: letters[i],
-                value: new leafNode_1.HuffmanLeafNode(letters[letters[i]])
+    createTree(nodes) {
+        while (nodes.items.length > 1) {
+            let firstNode = nodes.dequeue();
+            let secondNode = nodes.dequeue();
+            if (firstNode === undefined || secondNode === undefined)
+                throw new Error();
+            const leftNode = firstNode.priority < secondNode.priority ? firstNode : secondNode;
+            const rightNode = firstNode.priority < secondNode.priority ? firstNode : secondNode;
+            nodes.enqueue({
+                priority: leftNode.priority + rightNode.priority,
+                value: new treeNode_1.HuffmanTreeNode(leftNode.value, rightNode.value),
             });
         }
+        return nodes;
     }
+    generateHuffmanCodes(node, code) {
+        if (node.isLeaf()) {
+            this.huffmanCodes[node.element] = code;
+        }
+        else {
+            this.generateHuffmanCodes(node.left, code + '0');
+            this.generateHuffmanCodes(node.right, code + '1');
+        }
+    }
+    generateHuffmanCodesWithPrefixes(huffmanTree) {
+        this.generateHuffmanCodes(huffmanTree.peek().value, '');
+        return this.huffmanCodes;
+    }
+    ;
 }
 exports.TreeCreator = TreeCreator;
 //# sourceMappingURL=treeCreator.js.map

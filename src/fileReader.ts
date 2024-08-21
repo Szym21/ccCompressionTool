@@ -32,7 +32,7 @@ export class TextFileReader {
         for (let [char, frequency] of this.letters) {
             this.nodes.enqueue({
               priority: frequency,
-              value: new HuffmanLeafNode(frequency, char),
+              value: new HuffmanLeafNode(frequency, char)
             });
         }
     }
