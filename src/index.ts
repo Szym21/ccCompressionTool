@@ -13,8 +13,8 @@ reader.readFile();
 reader.countChars();
 reader.sortByValue();
 
-let tree = treeCreator.createTree(reader.nodes);
-let treeWithPrefix = treeCreator.generateHuffmanCodesWithPrefixes(tree);
+treeCreator.createTree(reader.nodes);
+treeCreator.generateHuffmanCodesWithPrefixes();
 
-let compressedText = compressor.compressText(treeWithPrefix, reader.textContent);
-compressor.writeCompressedTextToFile(treeWithPrefix, compressedText, './data/result.txt')
+compressor.compressText(treeCreator.huffmanCodes, reader.textContent);
+compressor.writeCompressedTextToFile(treeCreator.huffmanCodes, compressor.compressedText, './data/result.txt')

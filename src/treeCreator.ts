@@ -4,9 +4,10 @@ import { HuffmanBaseNode, PriorityQueue } from './types'
 
 export class TreeCreator{
     huffmanCodes: { [key: string]: string } = {}; 
+    huffmanTree : PriorityQueue<HuffmanBaseNode> = new PriorityQueue();
 
 
-    createTree(nodes : PriorityQueue<HuffmanBaseNode>) : PriorityQueue<HuffmanBaseNode>{
+    createTree(nodes : PriorityQueue<HuffmanBaseNode>){
         while (nodes.items.length > 1) {
             let firstNode = nodes.dequeue();
             let secondNode = nodes.dequeue();
@@ -18,7 +19,7 @@ export class TreeCreator{
               value: new HuffmanTreeNode(leftNode.value, rightNode.value),
             });
           }
-        return nodes;
+          this.huffmanTree = nodes;
     }
 
     generateHuffmanCodes(node: HuffmanBaseNode, code: string) {
@@ -30,9 +31,7 @@ export class TreeCreator{
         }
     }
 
-    generateHuffmanCodesWithPrefixes(huffmanTree: PriorityQueue<HuffmanBaseNode>) : 
-    { [key: string]: string }{       
-        this.generateHuffmanCodes(huffmanTree.peek().value, '');      
-        return this.huffmanCodes;
+    generateHuffmanCodesWithPrefixes(){       
+        this.generateHuffmanCodes(this.huffmanTree.peek().value, '');      
     };
 }

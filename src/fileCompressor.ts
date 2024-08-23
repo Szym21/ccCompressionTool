@@ -1,6 +1,8 @@
 import { writeFile } from 'fs';
 
 export class FileCompressor{
+    compressedText : Uint8Array = Uint8Array.from([]);
+
     compressText(prefixes : { [key: string]: string },text : string) {
         let arrayOfCodes: string[] = [];
         for (const char of text) {
@@ -19,7 +21,7 @@ export class FileCompressor{
           const byte = parseInt(byteString, 2);
           byteArray.push(byte);
         }
-        return Uint8Array.from(byteArray);
+        this.compressedText = Uint8Array.from(byteArray);
     }; 
 
     writeCompressedTextToFile = (
